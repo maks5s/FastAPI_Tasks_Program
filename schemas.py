@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class SchemaTaskAdd(BaseModel):
@@ -8,3 +8,4 @@ class SchemaTaskAdd(BaseModel):
 
 class SchemaTask(SchemaTaskAdd):
     id: int
+    model_config = ConfigDict(from_attributes=True)
