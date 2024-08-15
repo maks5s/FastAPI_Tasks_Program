@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends
 from repository import TaskRepository
-from schemas import SchemaTaskAdd
+from schemas import SchemaTaskAdd, SchemaTask
 
 router = APIRouter(prefix="/tasks", tags=["Tasks"])
 
@@ -13,6 +13,6 @@ async def add_task(task: Annotated[SchemaTaskAdd, Depends()]):
 
 
 @router.get("")
-async def get_tasks():
+async def get_tasks() -> list[SchemaTask]:
     tasks = await TaskRepository.find_all()
-    return {"tasks": tasks}
+    return tasks
