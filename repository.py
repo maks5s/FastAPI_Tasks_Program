@@ -1,6 +1,6 @@
 from sqlalchemy import select
 from database import new_session, TaskOrm
-from main import SchemaTaskAdd
+from schemas import SchemaTaskAdd
 
 
 class TaskRepository:
@@ -14,7 +14,6 @@ class TaskRepository:
             await session.flush()
             await session.commit()
             return task.id
-
 
     @classmethod
     async def find_all(cls):
