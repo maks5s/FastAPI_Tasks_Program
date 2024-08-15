@@ -9,3 +9,8 @@ class SchemaTaskAdd(BaseModel):
 class SchemaTask(SchemaTaskAdd):
     id: int
     model_config = ConfigDict(from_attributes=True)
+
+
+class SchemaTaskId(BaseModel):
+    ok: bool = True
+    task_id: int
